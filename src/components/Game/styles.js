@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const ArenaContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
 `;
 
-export { Container };
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export { ArenaContainer, Container };

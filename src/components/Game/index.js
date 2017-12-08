@@ -3,8 +3,9 @@ import { func } from 'prop-types';
 
 import HitButton from 'components/HitButton';
 import Arena from 'components/Arena';
+import ScoreBar from 'components/ScoreBar';
 
-import { Container } from './styles';
+import { ArenaContainer, Container } from './styles';
 
 const PLAYER1 = '1';
 const PLAYER2 = '2';
@@ -49,11 +50,15 @@ class Game extends Component {
   }
 
   render() {
+    const scoreDifference = this.state[PLAYER2] - this.state[PLAYER1];
     return (
       <Container>
-        <HitButton onClick={this.handleHit(PLAYER1)} />
-        <Arena />
-        <HitButton onClick={this.handleHit(PLAYER2)} />
+        <ScoreBar score={scoreDifference} />
+        <ArenaContainer>
+          <HitButton onClick={this.handleHit(PLAYER1)} />
+          <Arena />
+          <HitButton onClick={this.handleHit(PLAYER2)} />
+        </ArenaContainer>
       </Container>
     );
   }

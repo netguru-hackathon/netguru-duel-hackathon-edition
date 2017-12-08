@@ -12,7 +12,7 @@ const steps = [Start, Game, Score, Scoreboard];
 
 class App extends Component {
   state = {
-    step: 2,
+    step: 0,
     score: 0,
   }
 
