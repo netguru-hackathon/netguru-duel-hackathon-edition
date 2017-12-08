@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+
 import Start from 'components/Start';
 import Game from 'components/Game';
 import Score from 'components/Score';
 
+import { Container } from './styles';
+
 const steps = [Start, Game, Score];
+
 
 class App extends Component {
   state = {
@@ -21,9 +25,9 @@ class App extends Component {
     const Step = steps[this.state.step];
 
     return (
-      <div>
+      <Container>
         <Step nextStep={this.nextStep} />
-      </div>
+      </Container>
     );
   }
 }
