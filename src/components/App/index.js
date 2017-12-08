@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Start from 'components/Start';
 import Game from 'components/Game';
 import Score from 'components/Score';
+import Scoreboard from 'components/Scoreboard';
 
 const steps = {
   start: 'start',
@@ -11,7 +12,6 @@ const steps = {
 };
 
 class App extends Component {
-
   state = {
     step: steps.start,
     score: 0,
@@ -26,6 +26,6 @@ class App extends Component {
       </div>
     );
   }
-};
+}
 
 export default App;

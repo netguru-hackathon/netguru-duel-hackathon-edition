@@ -22,7 +22,6 @@ const Cta = styled.button`
 `;
 
 class Start extends Component {
-
   startGame = () => this.props.setStep('start');
 
   render() {
@@ -32,7 +31,7 @@ class Start extends Component {
         <Subtitle> extended edition</Subtitle>
         <Cta onClick={this.startGame}>Let's play</Cta>
       </Container>
-    )
+    );
   }
 }
 
