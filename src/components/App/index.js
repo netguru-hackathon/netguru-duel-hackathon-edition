@@ -26,7 +26,7 @@ class App extends Component {
 
     return (
       <Container>
-        <Step nextStep={this.nextStep} />
+        <Step nextStep={this.nextStep} onGameOver={(player) => console.log(player)} />
       </Container>
     );
   }

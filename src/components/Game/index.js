@@ -14,15 +14,38 @@ class Game extends Component {
     [PLAYER2]: 0,
   }
 
+  componentDidMount() {
+    this.startTime = new Date()
+  }
 
-  onHit = hittingPlayer => () => {
+  getFrequency = player => {
+    const score = this.state[player];
+    const endTime = new Date()
+    return 1000/((endTime - this.startTime) / score);
+  }
+
+  handleGameOver = () => {
+    const { onGameOver } = this.props;
+
+    const player1 = this.state[PLAYER1];
+    const player2 = this.state[PLAYER2];
+    const isGameOver = Math.abs(this.state[PLAYER1] - this.state[PLAYER2]) === 20;
+
+    if (isGameOver) {
+      const winner = player1 > player2 ? PLAYER1 : PLAYER2;
+      const frequency = this.getFrequency(winner);
+      onGameOver({ winner, frequency });
+    }
+  }
+
+  handleHit = hittingPlayer => () => {
     const { onGameOver } = this.props;
 
     this.setState(
       prevState => ({
         [hittingPlayer]: prevState[hittingPlayer] + 1,
       }),
-      () => Math.abs(this.state[PLAYER1] - this.state[PLAYER2]) === 20 && onGameOver(hittingPlayer),
+      this.handleGameOver,
     );
   }
 
@@ -30,9 +53,9 @@ class Game extends Component {
 
     return (
       <Container>
-        <HitButton onClick={this.onHit(PLAYER1)}/>
+        <HitButton onClick={this.handleHit(PLAYER1)}/>
         <Arena />
-        <HitButton onClick={this.onHit(PLAYER2)}/>
+        <HitButton onClick={this.handleHit(PLAYER2)}/>
       </Container>
     );
   }
