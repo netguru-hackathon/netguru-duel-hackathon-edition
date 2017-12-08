@@ -8,8 +8,14 @@ import App from 'components/App';
 import registerServiceWorker from 'utils/registerServiceWorker';
 
 injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
+
   html, body {
     height: 100%;
+  }
+
+  body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
   }
 
   #root {
