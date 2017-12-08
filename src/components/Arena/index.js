@@ -1,13 +1,11 @@
 import React from 'react';
 
-import Player from 'components/Player';
-
-import { Container } from './styles';
+import { Container, LeftPlayer, RightPlayer } from './styles';
 
 const Arena = () => (
   <Container>
-    <Player name="wiktor" alt="player" />
-    <Player name="kuba" alt="player" />
+    <LeftPlayer name="wiktor" alt="player" />
+    <RightPlayer name="kuba" alt="player" />
   </Container>
 );
 

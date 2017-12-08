@@ -12,6 +12,7 @@ const Header = styled.h1`
 const ScoresWrapper = styled.ul`
   margin: 0;
   padding-top: 50px;
+  letter-spacing: 2px;
   box-sizing: border-box;
   background-image: url(${gif});
   background-size: cover;
@@ -26,14 +27,14 @@ const ScoresWrapper = styled.ul`
 
 const Score = styled.li`
   font-size: 1.5em;
+  letter-spacing: 1px;
   width: 150px;
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
- 
-  
+
   &:nth-child(odd) {
     color: lightgrey;
   }
@@ -51,7 +52,6 @@ class Scoreboard extends Component {
     messagesRef.on('child_added', (snapshot) => {
       const score = { points: snapshot.val(), id: snapshot.key };
       this.setState({ highScores: [score].concat(this.state.highScores) });
-      console.log(this.state.highScores);
     });
   }
 
@@ -86,7 +86,6 @@ class Scoreboard extends Component {
 }
 
 export default Scoreboard;
-
 
 /*
 
