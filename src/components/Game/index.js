@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Player from 'components/Player';
 import HitButton from 'components/HitButton';
+import Arena from 'components/Arena';
 
 import { Container } from './styles';
 
@@ -10,8 +10,7 @@ class Game extends Component {
     return (
       <Container>
         <HitButton />
-        <Player name="wiktor" alt="player" />
-        <Player name="wiktor" alt="player" />
+          <Arena />
         <HitButton />
       </Container>
     );
