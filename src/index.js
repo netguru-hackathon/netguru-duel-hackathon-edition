@@ -7,6 +7,7 @@ import 'normalize.css';
 import App from 'components/App';
 import registerServiceWorker from 'utils/registerServiceWorker';
 
+// eslint-disable-next-line no-unused-expressions
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
 
