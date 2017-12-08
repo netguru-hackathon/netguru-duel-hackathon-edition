@@ -3,29 +3,29 @@ import Start from 'components/Start';
 import Game from 'components/Game';
 import Score from 'components/Score';
 
-const steps = {
-  start: 'start',
-  game: 'game',
-  score: 'score',
-  scoreBoard: 'scoreBoard',
-};
+const steps = [Start, Game, Score];
 
 class App extends Component {
-
   state = {
-    step: steps.start,
+    step: 0,
     score: 0,
   }
 
-  setStep = step => this.setState({ step });
+  nextStep = () => this.setState(prevState => ({
+    step: (prevState.step + 1) % 4,
+  }));
+
+  resetStep = () => this.setState({ step: 0 });
 
   render() {
+    const Step = steps[this.state.step];
+
     return (
       <div>
-        <Start setStep={this.setStep} />
+        <Step nextStep={this.nextStep} />
       </div>
     );
   }
-};
+}
 
 export default App;
