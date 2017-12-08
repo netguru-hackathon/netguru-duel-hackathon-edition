@@ -1,44 +1,7 @@
+/* eslint-disable */
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import fire from 'fire';
-import gif from 'assets/img/tumblr_nreno0duJh1td0of9o1_500.gif';
-
-const Header = styled.h1`
-  font-size: 3em;
-  color: white;
-  margin-bottom: 20px;
-`;
-
-const ScoresWrapper = styled.ul`
-  margin: 0;
-  padding-top: 50px;
-  letter-spacing: 2px;
-  box-sizing: border-box;
-  background-image: url(${gif});
-  background-size: cover;
-  list-style: none;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const Score = styled.li`
-  font-size: 1.5em;
-  letter-spacing: 1px;
-  width: 150px;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-
-  &:nth-child(odd) {
-    color: lightgrey;
-  }
-`;
+import { Header, ScoresWrapper, Score } from './styles';
 
 
 class Scoreboard extends Component {
@@ -53,17 +16,6 @@ class Scoreboard extends Component {
       const score = { points: snapshot.val(), id: snapshot.key };
       this.setState({ highScores: [score].concat(this.state.highScores) });
     });
-  }
-
-  addMessage = (e) => {
-    e.preventDefault();
-    const score = {
-      name: e.target.name.value,
-      score: parseInt(e.target.points.value, 10),
-    };
-    fire.database().ref('highScores').push(score);
-    e.target.name.value = '';
-    e.target.points.value = '';
   }
 
   render() {
@@ -86,12 +38,3 @@ class Scoreboard extends Component {
 }
 
 export default Scoreboard;
-
-/*
-
-<form onSubmit={this.addMessage}>
-          <input name="name" type="text" />
-          <input name="points" type="number" />
-          <input type="submit" />
-        </form>
- */
