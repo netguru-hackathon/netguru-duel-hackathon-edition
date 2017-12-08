@@ -1,4 +1,5 @@
 import React from 'react';
+import { func } from 'prop-types';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -43,8 +44,12 @@ const Start = ({ nextStep }) => (
   <Container>
     <Title>#netguru-duel</Title>
     <Subtitle> extended edition</Subtitle>
-    <Cta onClick={nextStep}>Let's play</Cta>
+    <Cta onClick={nextStep}>Let&lsquo;s play</Cta>
   </Container>
 );
+
+Start.propTypes = {
+  nextStep: func.isRequired,
+};
 
 export default Start;

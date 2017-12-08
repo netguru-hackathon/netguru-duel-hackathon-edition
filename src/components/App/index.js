@@ -21,12 +21,16 @@ class App extends Component {
 
   resetStep = () => this.setState({ step: 0 });
 
+  handleGameOver = () => {
+    this.nextStep();
+  }
+
   render() {
     const Step = steps[this.state.step];
 
     return (
       <Container>
-        <Step nextStep={this.nextStep} onGameOver={(player) => console.log(player)} />
+        <Step nextStep={this.nextStep} onGameOver={this.handleGameOver} />
       </Container>
     );
   }

@@ -9,6 +9,6 @@ const Arena = () => (
     <Player name="wiktor" alt="player" />
     <Player name="kuba" alt="player" />
   </Container>
-)
+);
 
-export default Arena
+export default Arena;
