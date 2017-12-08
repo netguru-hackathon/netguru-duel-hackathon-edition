@@ -3,7 +3,7 @@ import Start from 'components/Start';
 import Game from 'components/Game';
 import Score from 'components/Score';
 
-const step = {
+const steps = {
   start: 'start',
   game: 'game',
   score: 'score',
@@ -13,14 +13,16 @@ const step = {
 class App extends Component {
 
   state = {
-    step: step.start,
+    step: steps.start,
     score: 0,
   }
+
+  setStep = step => this.setState({ step });
 
   render() {
     return (
       <div>
-        <Start />
+        <Start setStep={this.setStep} />
       </div>
     );
   }
