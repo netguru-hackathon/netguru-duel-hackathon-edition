@@ -6,6 +6,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 40%;
+
+  @media (orientation : portrait) {
+    flex-direction: column;
+  }
 `;
 
 const bounce = keyframes`
@@ -22,11 +26,15 @@ const bounceRotate = keyframes`
 `;
 
 const LeftPlayer = styled(Player)`
-  animation: ${bounce} 2s ease-in-out infinite, ${bounceRotate} 2s ease-in-out infinite;;
+  animation: ${bounce} 2s ease-in-out infinite, ${bounceRotate} 2s ease-in-out infinite;
+  @media (orientation : portrait) {
+    display: block;
+    transform: rotate(180deg);
+  }
 `;
 
 const RightPlayer = styled(Player)`
-  animation: ${bounce} 3s ease-in-out infinite, ${bounceRotate} 3s ease-in-out infinite;;
+  animation: ${bounce} 3s ease-in-out infinite, ${bounceRotate} 3s ease-in-out infinite;
 `;
 
 export { Container, LeftPlayer, RightPlayer };
