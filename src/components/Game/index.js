@@ -18,12 +18,28 @@ class Game extends Component {
 
   componentDidMount() {
     this.startTime = new Date();
+    window.addEventListener('keydown', e => this.whenKeysPressed(e));
   }
+
 
   getFrequency = (player) => {
     const score = this.state[player];
     const endTime = new Date();
     return 1000 / ((endTime - this.startTime) / score);
+  }
+
+  whenKeysPressed(e) {
+    switch (e.keyCode) {
+      case 65: this.handleHit(PLAYER1);
+        break;
+      case 68: this.handleHit(PLAYER1);
+        break;
+      case 74: this.handleHit(PLAYER2);
+        break;
+      case 76: this.handleHit(PLAYER2);
+        break;
+      default:
+    }
   }
 
   handleGameOver = () => {
@@ -40,7 +56,7 @@ class Game extends Component {
     }
   }
 
-  handleHit = hittingPlayer => () => {
+  handleHit = (hittingPlayer) => {
     this.setState(
       prevState => ({
         [hittingPlayer]: prevState[hittingPlayer] + 1,
@@ -55,9 +71,9 @@ class Game extends Component {
       <Container>
         <ScoreBar score={scoreDifference} />
         <ArenaContainer>
-          <HitButton onClick={this.handleHit(PLAYER1)} />
+          <HitButton onClick={() => this.handleHit(PLAYER1)} />
           <Arena />
-          <HitButton onClick={this.handleHit(PLAYER2)} />
+          <HitButton onClick={() => this.handleHit(PLAYER2)} />
         </ArenaContainer>
       </Container>
     );

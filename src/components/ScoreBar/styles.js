@@ -22,7 +22,9 @@ const BarContainter = styled.div`
 `;
 
 const OuterBar = styled.div`
-  background: green;
+  background: #581845;
+  border-radius: 5%;
+  border: 1px solid gray;
   width: 80%;
   display: flex;
 `;
