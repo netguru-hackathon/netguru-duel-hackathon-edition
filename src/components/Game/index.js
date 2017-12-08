@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { func } from 'prop-types';
 
 import HitButton from 'components/HitButton';
 import Arena from 'components/Arena';
@@ -15,13 +16,13 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    this.startTime = new Date()
+    this.startTime = new Date();
   }
 
-  getFrequency = player => {
+  getFrequency = (player) => {
     const score = this.state[player];
-    const endTime = new Date()
-    return 1000/((endTime - this.startTime) / score);
+    const endTime = new Date();
+    return 1000 / ((endTime - this.startTime) / score);
   }
 
   handleGameOver = () => {
@@ -39,8 +40,6 @@ class Game extends Component {
   }
 
   handleHit = hittingPlayer => () => {
-    const { onGameOver } = this.props;
-
     this.setState(
       prevState => ({
         [hittingPlayer]: prevState[hittingPlayer] + 1,
@@ -50,15 +49,18 @@ class Game extends Component {
   }
 
   render() {
-
     return (
       <Container>
-        <HitButton onClick={this.handleHit(PLAYER1)}/>
+        <HitButton onClick={this.handleHit(PLAYER1)} />
         <Arena />
-        <HitButton onClick={this.handleHit(PLAYER2)}/>
+        <HitButton onClick={this.handleHit(PLAYER2)} />
       </Container>
     );
   }
 }
+
+Game.propTypes = {
+  onGameOver: func.isRequired,
+};
 
 export default Game;
