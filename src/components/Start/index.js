@@ -1,38 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 const Title = styled.h1`
-  font-size: 36px;
+  font-size: 44px;
 `;
 
 const Subtitle = styled.h3`
   font-size: 24px;
+  color: #aaa;
+  margin: 0 0 80px;
 `;
 
 const Cta = styled.button`
-  font-size: 28px;
+  font-size: 24px;
+  background-color: #581845;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 60px;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+  &:focus {
+    outline: 0;
+  }
+  &:active {
+    opacity: 0.8;
+  }
 `;
 
-class Start extends Component {
-  startGame = () => this.props.setStep('start');
-
-  render() {
-    return (
-      <Container>
-        <Title>#netguru-duel</Title>
-        <Subtitle> extended edition</Subtitle>
-        <Cta onClick={this.startGame}>Let's play</Cta>
-      </Container>
-    );
-  }
-}
+const Start = ({ nextStep }) => (
+  <Container>
+    <Title>#netguru-duel</Title>
+    <Subtitle> extended edition</Subtitle>
+    <Cta onClick={nextStep}>Let's play</Cta>
+  </Container>
+);
 
 export default Start;

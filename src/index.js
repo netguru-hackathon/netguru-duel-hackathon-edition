@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import 'normalize.css';
 import { injectGlobal } from 'styled-components';
+import 'normalize.css';
 
 import App from 'components/App';
 import registerServiceWorker from 'utils/registerServiceWorker';
 
 injectGlobal`
-  //@import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed';
+  @import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
+
+  html, body {
+    height: 100%;
+  }
 
   body {
     font-family: 'Barlow Semi Condensed', sans-serif;
+  }
+
+  #root {
+    height: inherit;
   }
 `;
 

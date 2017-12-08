@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
+
 import Start from 'components/Start';
 import Game from 'components/Game';
 import Score from 'components/Score';
-import Scoreboard from 'components/Scoreboard';
 
-const steps = {
-  start: 'start',
-  game: 'game',
-  score: 'score',
-  scoreBoard: 'scoreBoard',
-};
+import { Container } from './styles';
+
+const steps = [Start, Game, Score];
+
 
 class App extends Component {
   state = {
-    step: steps.start,
+    step: 0,
     score: 0,
   }
 
-  setStep = step => this.setState({ step });
+  nextStep = () => this.setState(prevState => ({
+    step: (prevState.step + 1) % 4,
+  }));
+
+  resetStep = () => this.setState({ step: 0 });
 
   render() {
+    const Step = steps[this.state.step];
+
     return (
-      <div>
-        <Start setStep={this.setStep} />
-      </div>
+      <Container>
+        <Step nextStep={this.nextStep} />
+      </Container>
     );
   }
 }
