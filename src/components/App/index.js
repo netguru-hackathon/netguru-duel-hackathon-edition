@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+
 import Game from 'components/Game';
+
+import { Container } from './styles';
 
 class App extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <Game />
-      </div>
+      </Container>
     );
   }
 }
