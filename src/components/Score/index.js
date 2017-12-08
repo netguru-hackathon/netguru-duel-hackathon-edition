@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fire from 'fire';
 
 import styled from 'styled-components';
 
@@ -52,19 +53,34 @@ const Cta = styled.button`
   }
 `;
 
+
 class Score extends Component {
+
+  score = Math.floor(Math.random()*10000);
+
+  onButtonClick = () => {
+    fire.database().ref('highScores').push(this.score)
+      .then(() => this.props.nextStep());
+  };
+
   render() {
-    const { nextStep } = this.props;
+
+    // const { nextStep } = this.props;
+
+
 
     return (
       <Container>
         <Title>Congratulations! You won!</Title>
-        <Subtitle>Give us your name:</Subtitle>
+        <Subtitle>Your score: {this.score}. Give us your name:</Subtitle>
         <Input />
-        <Cta onClick={nextStep}>Proceed to the hall of fame</Cta>
+        <Cta onClick={this.onButtonClick}>Proceed to the hall of fame</Cta>
       </Container>
     );
   }
 }
 
 export default Score;
+
+
+//
