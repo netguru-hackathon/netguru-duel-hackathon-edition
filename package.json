@@ -17,5 +17,8 @@
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "eslint": "eslint \"src/**/*.js\""
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3"
   }
 }
