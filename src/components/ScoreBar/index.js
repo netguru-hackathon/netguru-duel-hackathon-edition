@@ -1,4 +1,5 @@
 import React from 'react';
+import { number } from 'prop-types';
 import { LeftBar, RightBar, BarContainter, OuterBar } from './styles';
 
 const ScoreBar = ({ score }) => (
@@ -11,5 +12,9 @@ const ScoreBar = ({ score }) => (
     </BarContainter>
   </OuterBar>
 );
+
+ScoreBar.propTypes = {
+  score: number.isRequired,
+};
 
 export default ScoreBar;

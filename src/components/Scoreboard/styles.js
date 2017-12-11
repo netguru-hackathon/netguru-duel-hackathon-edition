@@ -37,4 +37,4 @@ const Score = styled.li`
   }
 `;
 
-export { Header, ScoresWrapper, Score }
+export { Header, ScoresWrapper, Score };

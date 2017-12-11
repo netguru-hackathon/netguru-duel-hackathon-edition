@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { func } from 'prop-types';
 import fire from 'fire';
 
 import styled from 'styled-components';
@@ -55,20 +56,14 @@ const Cta = styled.button`
 
 
 class Score extends Component {
-
-  score = Math.floor(Math.random()*10000);
-
   onButtonClick = () => {
     fire.database().ref('highScores').push(this.score)
       .then(() => this.props.nextStep());
   };
 
+  score = Math.floor(Math.random() * 10000);
+
   render() {
-
-    // const { nextStep } = this.props;
-
-
-
     return (
       <Container>
         <Title>Congratulations! You won!</Title>
@@ -80,7 +75,8 @@ class Score extends Component {
   }
 }
 
+Score.propTypes = {
+  nextStep: func.isRequired,
+};
+
 export default Score;
-
-
-//
